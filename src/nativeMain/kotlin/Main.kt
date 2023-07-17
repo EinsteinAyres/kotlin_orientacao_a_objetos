@@ -1,66 +1,68 @@
+import platform.posix.double_t
+import platform.windows.JOB_OBJECT_POST_AT_END_OF_JOB
+
 fun main() {
+
     println("Bem vindo ao Bytebank!")
 
-    var i = 0
-    while (i<5){
-        var titular = "Alex $i";
-    val numeroConta = 1000 + i;
-    var saldo = i + 10.0;
-//
-//    saldo = 100.0 + 2.0
-//    saldo += 200
-
-    println("Titular: $titular") //dentro do print o "$" substitui a concatenação
-    println("Número da conta: $numeroConta")
-    println("Saldo da conta: $saldo")
-        println()
-        i++
-    }
+    val contaAlex = Conta()
+    contaAlex.titular = "Alex"
+    contaAlex.numero = 1001
+    contaAlex.saldo = 200.0
 
 
+    val contaFran = Conta()
+    contaFran.titular = "Fran"
+    contaFran.numero = 1002
+    contaFran.saldo = 300.0
 
-//    for (i in 5 downTo 1){
-//
-//        if (i==4){
-//           continue
-//        }
-//
-//    var titular = "Alex $i";
-//    val numeroConta = 1000 + i;
-//    var saldo = i + 10.0;
-////
-////    saldo = 100.0 + 2.0
-////    saldo += 200
-//
-//    println("Titular: $titular") //dentro do print o "$" substitui a concatenação
-//    println("Número da conta: $numeroConta")
-//    println("Saldo da conta: $saldo")
-//        println()
-//
-//
-//    println(i)}
-//
-////    testaCondicoes(saldo)
+
+    println(contaAlex.titular)
+    println(contaAlex.numero)
+    println(contaAlex.saldo)
+
+    println(contaFran.titular)
+    println(contaFran.numero)
+    println(contaFran.saldo)
+
+
+    val numeroX = 10
+    var numeroY = numeroX
+    numeroY++
+
+    println("numeroX $numeroX")
+    println("numeroY $numeroY")
+
+    val contaJoao = Conta()
+    contaJoao.titular = "João"
+
+    val contaMaria = contaJoao
+    contaMaria.titular = "Maria"
+
+    println(contaJoao.titular)
+
+    contaAlex.saldo += 50.0
+
+
+
 
 
 }
 
-fun testaCondicoes(saldo:Double) {
 
-    if (saldo > 0.0) {
-        println("Conta é positiva")
-    } else if(saldo == 0.0) {
-        println("Conta é neutra")
-    }else {
-        println("Conta é negativa")
-    }
 
-    // Os códigos acima e abaixo são equivalentes
 
-    when {
-        saldo > 0.0 -> println("Conta é positiva")
-        saldo == 0.0 -> println("Conta é neutra")
-        else -> println("Conta é negativa")
-    }
+class Conta {
 
+    var titular = ""
+    var numero = 0
+    var saldo = 0.0
+
+    var cpf = ""
+    var nomePai =""
+    var nomeMae = ""
+}
+
+fun deposita(conta:Conta, valor:Double){
+    conta.saldo += valor
 }
